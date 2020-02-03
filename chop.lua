@@ -1,21 +1,14 @@
-local cmp = require("component")
 local rb = require("robot")
 
-while true do
-    if(rb.detect() or rb.detectUp()) then
-	if not rb.swing() then
-	    while not rb.detectDown() do
-		rb.down()
-	    end
-	elseif not rb.up() then
-	    rb.swingUp()
-	    rb.up()
-	end
-    else
-	while not rb.detectDown() do
-	    rb.down()
-	end
-	return
-    end
+rb.swing()
+rb.forward()
+
+while rb.detectUp() do
+    rb.swingUp()
+    rb.up()
 end
+while not rb.detectDown() do
+    rb.down()
+end
+rb.back()
 

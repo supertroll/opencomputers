@@ -1,5 +1,6 @@
 rb = require("robot")
 shell = require("shell")
+require("mover")
 
 arg = shell.parse(...)
 
@@ -20,15 +21,16 @@ function mine3x3()
 	rb.swing()
 	rb.turnRight()
     end
-    rb.down()
-    rb.down()
+    move("2d")
 end
 
 if arg[1] ~= nil then
     for i=1,arg[1] do
 	mine3x3()
+
     end
     for i=1,arg[1] do
+	print(arg[1] - i .. " left")
 	rb.back()
     end
 else

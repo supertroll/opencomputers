@@ -18,10 +18,8 @@ end
 
 for i=1,tonumber(arg[1]) do
     for j in pairs(seq) do
-	if not seq[j]() then
-	    goBack(i)
-	    return
-	end
+	seq[j]() 
     end
 end
+goBack(arg[1])
 	

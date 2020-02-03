@@ -1,3 +1,5 @@
+local cp = require("computer")
+local cmp = require("component")
 local rb = require("robot")
 
 local moves = {
@@ -16,5 +18,13 @@ function move(movement)
 	for i=1,amount do
 	    moves[move]()
 	end
+	refuel()
+    end
+end
+
+function refuel()
+    if cp.energy() < (cp.maxEnergy() / 10) and cmp.generator.count() == 0 then
+	rb.select(16)
+	cmp.generator.insert(rb.count() - 1)
     end
 end
