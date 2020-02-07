@@ -3,23 +3,23 @@ local rb = require("robot")
 
 local function check(upOrDown)
     if upOrDown == "up" then
-	for i=12,15 do
+	for i=9,15 do
 	    rb.select(i)
-	    if rb.compareUp() then
+	    if not rb.compareUp() then
 		return true
 	    end
 	end
     elseif upOrDown == "down" then
-	for i=12,15 do
+	for i=9,15 do
 	    rb.select(i)
-	    if rb.compareDown() then
+	    if not rb.compareDown() then
 		return true
 	    end
 	end
     else
-	for i=12,15 do
+	for i=9,15 do
 	    rb.select(i)
-	    if rb.compare() then
+	    if not rb.compare() then
 		return true
 	    end
 	end
