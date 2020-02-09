@@ -11,4 +11,3 @@ while not rb.detectDown() do
     rb.down()
 end
 rb.back()
-
