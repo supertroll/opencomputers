@@ -25,6 +25,6 @@ end
 function refuel()
     if cp.energy() < (cp.maxEnergy() / 10) and cmp.generator.count() == 0 then
 	rb.select(16)
-	cmp.generator.insert(rb.count() - 1)
+	cmp.generator.insert(1)
     end
 end
