@@ -12,28 +12,28 @@ local UDOffset = 0
 
 function check(upOrDown)
     if upOrDown == "up" then
-	for i=12,15 do
+	for i=9,15 do
 	    rb.select(i)
 	    if rb.compareUp() then
-		return true
+		return false
 	    end
 	end
     elseif upOrDown == "down" then
-	for i=12,15 do
+	for i=9,15 do
 	    rb.select(i)
 	    if rb.compareDown() then
-		return true
+		return false
 	    end
 	end
     else
-	for i=12,15 do
+	for i=9,15 do
 	    rb.select(i)
 	    if rb.compare() then
-		return true
+		return false
 	    end
 	end
     end
-    return false
+    return true
 end
 
 function roundCheck(currentOffset)
