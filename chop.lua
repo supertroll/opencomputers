@@ -2,8 +2,9 @@ local rb = require("robot")
 
 rb.swing()
 rb.forward()
+rb.select(1)
 
-while rb.detectUp() do
+while rb.compare() do
     rb.swingUp()
     rb.up()
 end
