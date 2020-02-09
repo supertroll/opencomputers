@@ -77,4 +77,4 @@ local function forwardStep(overrideAmount)
     end
 end
 
-forwardStep(...)
+forwardStep(tonumber(...))
