@@ -1,30 +1,33 @@
 require("mover")
+
 local rb = require("robot")
+
+local goneForward = 0
 
 local function check(upOrDown)
     if upOrDown == "up" then
 	for i=9,15 do
 	    rb.select(i)
-	    if not rb.compareUp() then
-		return true
+	    if rb.compareUp() then
+		return false
 	    end
 	end
     elseif upOrDown == "down" then
 	for i=9,15 do
 	    rb.select(i)
-	    if not rb.compareDown() then
-		return true
+	    if rb.compareDown() then
+		return false
 	    end
 	end
     else
 	for i=9,15 do
 	    rb.select(i)
-	    if not rb.compare() then
-		return true
+	    if rb.compare() then
+		return false
 	    end
 	end
     end
-    return false
+    return true
 end
 
 local function roundCheck()
@@ -48,13 +51,22 @@ local function roundCheck()
     rb.turnLeft()
 end
 
+local function invCheck()
+    for i=1,16 do
+	if rb.count(i) == 0 then
+	    return true
+	end
+    end
+    return false
+end
+
 
 local function forwardStep(overrideAmount)
-    if check("") or overrideAmount > 0 then
-	local goneF=goneForward + 1
+    if check("") or overrideAmount > 0 and invCheck() then
+	goneForward = goneForward + 1
 	roundCheck()
 	rb.swing()
-	rb.forward()
+	move("f")
 	forwardStep(overrideAmount - 1)
     else
 	roundCheck()
@@ -64,3 +76,5 @@ local function forwardStep(overrideAmount)
 	goneForward = 0
     end
 end
+
+forwardStep(...)
