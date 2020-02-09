@@ -4,7 +4,7 @@ rb.swing()
 rb.forward()
 rb.select(1)
 
-while rb.compare() do
+while rb.compareUp() do
     rb.swingUp()
     rb.up()
 end
